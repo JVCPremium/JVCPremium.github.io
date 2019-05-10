@@ -1,0 +1,66 @@
+<div style="text-align: center">
+<h1>Bienvenue sur JVC premium !</h1>
+
+<p>Le contenu du message que vous vouliez voir est le suivant :</p>
+
+<div id="content" style="margin-top: 75px">
+    <p><b>Eh bah alors on clique sur n'importe quel lien sans se poser de questions mon petit khey ?</b></p>
+    <p>Te voilà sur une page sous mon contrôle ! T'as de la chance que c'était du troll (<b><u>post ou cancer</u></b>), tu peux cliquer sur le bouton précédent de ton navigateur pour revenir en arrière.</p>
+    <p>Parce qu'en fait j'aurai pu faire un truc un peu plus violent (et illégal)...</p>
+    <p>Par exemple te rediriger sur un site clone de JVC pour te fisher ton mot de passe :)</p>
+
+    <p style="margin-top: 40px">Vive la passoire qu'est le Web...</p>
+
+    <p style="margin-top: 75px">(Si le topic tourne un peu et que vous êtes méritants, <b>j'expliquerai comment c'est possible, disons en page 15 ou... 25 ;)</b> )</p>
+</div>
+</div>
+<script>
+    // Coucou toi qui regarde le code ! T'inquiète pas de vol de données là dedans, juste la démo :)
+    document.body.querySelector("#content").style.display = 'none'
+    var p = document.createElement("p")
+    var text = document.createTextNode("Déchiffrement en cours, veuillez patienter...")
+    p.appendChild(text)
+    p.className = 'start-spinner'
+    document.body.appendChild(p)
+    setTimeout(function() {
+        document.body.querySelector(".start-spinner").remove()
+        document.body.querySelector("#content").style.display = 'block'
+    }, 8500)
+
+</script>
+<style>
+    .start-spinner {
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      padding: 5rem;
+    }
+    .start-spinner::before {
+      animation: 1s linear infinite spinner;
+      border: solid 3px #eee;
+      border-bottom-color: #EF6565;
+      border-radius: 50%;
+      content: "";
+      height: 40px;
+      left: 50%;
+      position: absolute;
+      top: 12rem;
+      transform: translate3d(-50%, -50%, 0);
+      transform-origin: center;
+      width: 40px;
+      will-change: transform;
+    }
+    @keyframes spinner {
+      0% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate3d(-50%, -50%, 0) rotate(360deg);
+      }
+    }
+    @media (max-width: 1100px) {
+      .start-spinner {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
