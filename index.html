@@ -1,6 +1,74 @@
-<html lang="fr">
-  <noscript>Vous devez activer javascript pour installer JVCpremium</noscript>
+<head>
+  <style>
+    .start-spinner {
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      padding: 5rem;
+    }
+    .start-spinner::before {
+      animation: 1s linear infinite spinner;
+      border: solid 3px #eee;
+      border-bottom-color: #EF6565;
+      border-radius: 50%;
+      content: "";
+      height: 40px;
+      left: 50%;
+      position: absolute;
+      top: 12rem;
+      transform: translate3d(-50%, -50%, 0);
+      transform-origin: center;
+      width: 40px;
+      will-change: transform;
+    }
+    @keyframes spinner {
+      0% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate3d(-50%, -50%, 0) rotate(360deg);
+      }
+    }
+    @media (max-width: 1100px) {
+      .start-spinner {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body style="text-align: center">
+  <h1 id="noscript">Vous devez activer javascript pour installer JVCpremium !</div>
   <script>
-    console.log(window.opener)
+    document.querySelector("#noscript").remove()
+
+    if (!window.opener) {
+      var h1 = document.createElement("h1")
+      var p = document.createElement("p")
+      var text = document.createTextNode("Vous ne pouvez pas installer JVCpremium ! Pas de chance !")
+      var text2 = document.createTextNode("JVCpremium n'est pas compatible avec Safari (l'utilisez vous ?), ou peut être que vous avez des bloqueurs (Ghostery) ? Sinon c'est que vous avez mal cliqué sur le lien, réessayez avec un clic normal de la souris.")
+      h1.appendChild(text)
+      p.appendChild(text2)
+      document.body.appendChild(h1)
+      document.body.appendChild(p)
+    }
+
+    var header = document.createElement("h1")
+    var text = document.createTextNode("JVC premium est en cours d'installation !")
+    header.appendChild(text)
+    header.className = 'start-spinner'
+    document.body.appendChild(header)
+    
+    setTimeout(function() {
+      document.body.querySelector(".start-spinner").remove()
+      opener.location = 'jvcpremium'
+      var h1 = document.createElement("h1")
+      var text = document.createTextNode("Félicitations, JVC premium a été installé !")
+      h1.appendChild(text)
+      document.body.appendChild(h1)
+      var h12 = document.createElement("h1")
+      var text2 = document.createTextNode("Vous pouvez retourner sur l'onglet précédent pour lire le message de l'auteur.")
+      h12.appendChild(text2)
+      document.body.appendChild(h12)
+    }, 2000)
   </script>
-</html>
+</body>
